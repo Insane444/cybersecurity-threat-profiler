@@ -8,6 +8,7 @@ import sys
 import json
 import time
 import random
+from turtle import color
 import joblib
 import numpy as np
 import pandas as pd
@@ -271,7 +272,7 @@ with st.sidebar:
     st.markdown("""
     <div style="text-align: center; padding: 5px 0 15px 0;">
         <div style="font-size: 2.6rem; margin-bottom: 2px;">🛡️</div>
-        <div style="font-size: 1.22rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.02em;">CYBER THREAT & INTRUSION PROFILER</div>
+        <div style="font-size: 1.22rem; font-weight: 800; color: #0284c7; letter-spacing: -0.02em;">CYBER THREAT & INTRUSION PROFILER</div>
         <div style="font-size: 0.74rem; color: #00f0ff; letter-spacing: 0.12em; text-transform: uppercase;">NSL-KDD Next-Gen SOC Engine</div>
     </div>
     """, unsafe_allow_html=True)
@@ -319,7 +320,7 @@ if selected_page == "📡 Live SOC Threat Radar & Stream":
     st.markdown("""
     <div class="soc-header-banner">
         <div>
-            <div style="font-size: 1.55rem; font-weight: 800; color: #ffffff;">Live SOC Network Threat Radar & Stream Simulator</div>
+            <div style="font-size: 1.55rem; font-weight: 800; color: #0284c7;">Live SOC Network Threat Radar & Stream Simulator</div>
             <div style="color: #94a3b8; font-size: 0.86rem; margin-top: 4px;">
                 Simulating live line-rate packet flow telemetry with instantaneous dual-engine security triage and automated alert broadcasting.
             </div>
