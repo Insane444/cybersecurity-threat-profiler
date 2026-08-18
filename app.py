@@ -8,7 +8,6 @@ import sys
 import json
 import time
 import random
-from turtle import color
 import joblib
 import numpy as np
 import pandas as pd
