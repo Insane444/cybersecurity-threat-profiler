@@ -311,7 +311,52 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-
+# ---------------------------------------------------------
+# Shared Default Packet Template
+# ---------------------------------------------------------
+DEFAULT_PACKET = {
+    "duration": 0,
+    "protocol_type": "tcp",
+    "service": "http",
+    "flag": "SF",
+    "src_bytes": 312,
+    "dst_bytes": 1840,
+    "land": 0,
+    "wrong_fragment": 0,
+    "urgent": 0,
+    "hot": 0,
+    "num_failed_logins": 0,
+    "logged_in": 1,
+    "num_compromised": 0,
+    "root_shell": 0,
+    "su_attempted": 0,
+    "num_root": 0,
+    "num_file_creations": 0,
+    "num_shells": 0,
+    "num_access_files": 0,
+    "num_outbound_cmds": 0,
+    "is_host_login": 0,
+    "is_guest_login": 0,
+    "count": 5,
+    "srv_count": 5,
+    "serror_rate": 0.0,
+    "srv_serror_rate": 0.0,
+    "rerror_rate": 0.0,
+    "srv_rerror_rate": 0.0,
+    "same_srv_rate": 1.0,
+    "diff_srv_rate": 0.0,
+    "srv_diff_host_rate": 0.0,
+    "dst_host_count": 80,
+    "dst_host_srv_count": 255,
+    "dst_host_same_srv_rate": 1.0,
+    "dst_host_diff_srv_rate": 0.0,
+    "dst_host_same_src_port_rate": 0.04,
+    "dst_host_srv_diff_host_rate": 0.0,
+    "dst_host_serror_rate": 0.0,
+    "dst_host_srv_serror_rate": 0.0,
+    "dst_host_rerror_rate": 0.0,
+    "dst_host_srv_rerror_rate": 0.0
+}
 # =====================================================================
 # MODULE 1: 📡 LIVE SOC THREAT RADAR & STREAM SIMULATOR
 # =====================================================================
@@ -736,22 +781,8 @@ elif selected_page == "🔍 Deep Packet Inspector & XAI Lab":
     st.markdown("##### ⚡ Quick Load Attack Scenario Presets")
     preset_col1, preset_col2, preset_col3, preset_col4, preset_col5 = st.columns(5)
 
-    default_packet = {
-        "duration": 0, "protocol_type": "tcp", "service": "http", "flag": "SF",
-        "src_bytes": 312, "dst_bytes": 1840, "land": 0, "wrong_fragment": 0, "urgent": 0,
-        "hot": 0, "num_failed_logins": 0, "logged_in": 1, "num_compromised": 0,
-        "root_shell": 0, "su_attempted": 0, "num_root": 0, "num_file_creations": 0,
-        "num_shells": 0, "num_access_files": 0, "num_outbound_cmds": 0,
-        "is_host_login": 0, "is_guest_login": 0, "count": 5, "srv_count": 5,
-        "serror_rate": 0.0, "srv_serror_rate": 0.0, "rerror_rate": 0.0,
-        "srv_rerror_rate": 0.0, "same_srv_rate": 1.0, "diff_srv_rate": 0.0,
-        "srv_diff_host_rate": 0.0, "dst_host_count": 80, "dst_host_srv_count": 255,
-        "dst_host_same_srv_rate": 1.0, "dst_host_diff_srv_rate": 0.0,
-        "dst_host_same_src_port_rate": 0.04, "dst_host_srv_diff_host_rate": 0.0,
-        "dst_host_serror_rate": 0.0, "dst_host_srv_serror_rate": 0.0,
-        "dst_host_rerror_rate": 0.0, "dst_host_srv_rerror_rate": 0.0
-    }
-
+    default_packet = DEFAULT_PACKET.copy()
+    
     if "current_packet" not in st.session_state:
         st.session_state.current_packet = default_packet.copy()
 
@@ -1099,7 +1130,7 @@ elif selected_page == "🛡️ MITRE Matrix & Multi-Vendor SOC Rules":
     st.markdown("#### 📋 Executive CISO Incident Triage Report")
     st.markdown("Download a structured forensic audit report ready for executive briefing:")
     
-    sample_ciso_pkt = default_packet.copy()
+    sample_ciso_pkt = DEFAULT_PACKET.copy()
     ciso_report_content = generate_ciso_report(sample_ciso_pkt, rule_profile, 99.8)
     
     st.download_button(
