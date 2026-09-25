@@ -1131,7 +1131,18 @@ elif selected_page == "🛡️ MITRE Matrix & Multi-Vendor SOC Rules":
     st.markdown("Download a structured forensic audit report ready for executive briefing:")
     
     sample_ciso_pkt = DEFAULT_PACKET.copy()
-    ciso_report_content = generate_ciso_report(sample_ciso_pkt, rule_profile, 99.8)
+
+ciso_threat_profile = get_threat_profile(
+    selected_target_family,
+    selected_target_family == "Zero-Day",
+    1.0 if selected_target_family == "Zero-Day" else 0.0
+)
+
+ciso_report_content = generate_ciso_report(
+    sample_ciso_pkt,
+    ciso_threat_profile,
+    99.8
+)
     
     st.download_button(
         label=f"📥 Download CISO Incident Report ({selected_target_family})",
